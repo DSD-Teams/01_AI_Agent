@@ -1,8 +1,9 @@
 import e from "express";
 import chat from "./answer.js";
-
+import cors from "cors";
 const app = e();
 
+app.use(cors());
 app.use(e.json());
 
 app.post("/api", async (req, res) => {
@@ -14,7 +15,8 @@ app.post("/api", async (req, res) => {
     }
 
     const reply = await chat(input); // ✅ Wait for the AI response
-    res.send(reply);                 // ✅ Send the actual message text
+
+    res.json({ reply });              // ✅ Send the actual message text
   } catch (err) {
     console.error(err);
     res.status(500).send("Error while processing request");
