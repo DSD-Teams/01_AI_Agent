@@ -2,5 +2,5 @@ POST http://localhost:1234/api
 Content-Type: application/json
 
     {
-      "input": "ho"
+      "input": "3+5=?"
     }
